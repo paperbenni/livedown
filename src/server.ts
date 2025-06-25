@@ -14,6 +14,7 @@ const require = createRequire(import.meta.url);
 const markdownItTaskCheckbox = require("markdown-it-task-checkbox");
 const markdownItEmoji = require("markdown-it-emoji");
 const markdownItGitHubHeadings = require("markdown-it-github-headings");
+const { katex } = require("@mdit/plugin-katex");
 
 interface ServerOptions {
   port?: number;
@@ -60,6 +61,10 @@ class LivedownServer {
     this.md.use(markdownItEmoji.full || markdownItEmoji);
     this.md.use(markdownItGitHubHeadings, {
       prefix: "",
+    });
+    this.md.use(katex, {
+      throwOnError: false,
+      errorColor: "#cc0000",
     });
 
     this.setupMiddleware();

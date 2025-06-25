@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+@import "katex/dist/katex.min.css";
 
 @theme {
     --color-accent: #2563eb;
@@ -70,4 +71,42 @@
     .animate-spin-slow {
         animation: spin 2s linear infinite;
     }
+}
+
+/* KaTeX math styling */
+.katex {
+    font-size: 1.05em;
+}
+
+.katex-display {
+    margin: 1.5em 0;
+    text-align: center;
+}
+
+.katex-display > .katex {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* Math inline styling */
+.katex-inline {
+    white-space: nowrap;
+}
+
+/* Dark mode support for math */
+.dark .katex {
+    color: inherit;
+}
+
+.dark .katex .base {
+    color: inherit;
+}
+
+/* Ensure math doesn't break line height in prose */
+.markdown-body .katex {
+    line-height: 1;
+}
+
+.markdown-body .katex-display {
+    line-height: 1.2;
 }
