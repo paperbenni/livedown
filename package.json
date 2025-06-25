@@ -6,7 +6,7 @@
   "type": "module",
   "main": "dist/server.js",
   "bin": {
-    "livedown": "dist/bin/livedown.js"
+    "livedown": "dist/server.js"
   },
   "bugs": {
     "url": "https://github.com/shime/livedown/issues"
@@ -16,10 +16,10 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "build": "bun run build:server && bun run build:client && bun run postbuild",
+    "build": "bun run build:server && bun run build:client",
     "build:server": "tsc",
     "build:client": "vite build",
-    "postbuild": "node scripts/postbuild.js",
+
     "dev": "concurrently \"bun run dev:server\" \"bun run dev:client\" --names \"server,client\" --prefix-colors \"blue,green\"",
     "dev:server": "NODE_ENV=development bun run --watch src/server.ts",
     "dev:client": "vite dev",
@@ -29,7 +29,7 @@
     "lint": "eslint src/**/*.ts client/**/*.ts",
     "lint:fix": "eslint src/**/*.ts client/**/*.ts --fix",
     "type-check": "tsc --noEmit && tsc --noEmit -p client/tsconfig.json",
-    "clean": "rm -rf dist public/dist",
+    "clean": "rm -rf dist public/dist static",
     "prepack": "bun run build"
   },
   "dependencies": {
