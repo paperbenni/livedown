@@ -249,7 +249,8 @@ function initializeClient(): void {
   const client = new LivedownClient();
 
   // Store client instance globally for debugging
-  (window as any).livedownClient = client;
+  (window as Window & { livedownClient?: typeof client }).livedownClient =
+    client;
 
   // Cleanup on page unload
   window.addEventListener("beforeunload", () => {

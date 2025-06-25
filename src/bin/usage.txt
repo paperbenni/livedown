@@ -10,6 +10,7 @@ COMMANDS:
 OPTIONS:
 
   -h, --help      You're reading it.
+  -v, --version   Shows the version number.
   --open          Opens the preview in the browser.
   --verbose       Provides debug messages.
   --port PORT     Specifies the port to use.
