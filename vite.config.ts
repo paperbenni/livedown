@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   root: "client",
@@ -33,6 +34,7 @@ export default defineConfig({
   define: {
     __DEV__: JSON.stringify(process.env.NODE_ENV === "development"),
   },
+  plugins: [tailwindcss()],
   optimizeDeps: {
     include: ["socket.io-client", "highlight.js"],
   },

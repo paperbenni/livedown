@@ -119,18 +119,10 @@ class LivedownClient {
       return;
     }
 
-    // Smooth content update
-    this.markdownBody.style.opacity = "0.7";
-
-    setTimeout(() => {
-      if (this.markdownBody) {
-        this.markdownBody.innerHTML = data;
-        this.highlightCode();
-        this.setupLinks();
-        this.setupTaskLists();
-        this.markdownBody.style.opacity = "1";
-      }
-    }, 50);
+    this.markdownBody.innerHTML = data;
+    this.highlightCode();
+    this.setupLinks();
+    this.setupTaskLists();
   }
 
   private highlightCode(): void {
@@ -212,13 +204,12 @@ class LivedownClient {
   }
 
   private closeWindow(): void {
-    // Show a styled notification before closing
     const notification = document.createElement("div");
     notification.className = "notification";
     notification.innerHTML = `
-      <div style="text-align: center;">
-        <div style="font-size: 18px; margin-bottom: 10px;">🚀 Livedown Server Stopped</div>
-        <div>Closing window in 3 seconds...</div>
+      <div class="text-center">
+        <div class="text-lg font-semibold mb-2">🚀 Livedown Server Stopped</div>
+        <div class="text-gray-600 dark:text-gray-400">Closing window in 3 seconds...</div>
       </div>
     `;
 
@@ -239,7 +230,6 @@ class LivedownClient {
     setTimeout(() => {
       clearInterval(countdownInterval);
       window.close();
-      // Fallback if window.close() doesn't work
       window.location.href = "about:blank";
     }, 3000);
   }

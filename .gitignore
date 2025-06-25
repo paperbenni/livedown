@@ -1,6 +1,5 @@
 # Dependencies
 node_modules/
-bun.lockb
 
 # Build outputs
 dist/
@@ -97,7 +96,6 @@ temp/
 *~
 
 # OS generated files
-.DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
@@ -109,6 +107,26 @@ Thumbs.db
 test-*.md
 *.test.md
 
+# Livedown-specific files
+# Test markdown files that might be created during development
+demo.md
+sample.md
+example.md
+preview.md
+
+# Temporary markdown files
+*.tmp.md
+*.temp.md
+
 # Local development files
 *.local
 local.*
+
+# macOS specific
+.DS_Store
+
+# Windows specific
+desktop.ini
+
+# Linux specific
+.directory
