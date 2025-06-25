@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/shime/livedown.svg)](https://travis-ci.org/shime/livedown)
 [![Downloads](https://img.shields.io/npm/dt/livedown.svg)](https://npmjs.org/package/livedown)
 
-Live markdown previews for your favorite editor.
+Live markdown previews for your favorite editor. Now powered by TypeScript, Vite, and modern web technologies.
 
 * [Vim plugin](https://github.com/shime/vim-livedown)
 * [Emacs plugin](https://github.com/shime/emacs-livedown)
@@ -18,16 +18,67 @@ Live markdown previews for your favorite editor.
 * GitHub flavored clickable headings/permalinks
 * GitHub flavored checkboxes
 * Real-time instant preview
+* Modern TypeScript codebase
+* Vite-powered frontend with hot module replacement
+* Socket.io for real-time communication
+* Bun runtime support
 
 And more!
 
 ## Installation
 
+### Global Installation (recommended)
+
     $ npm install -g livedown
+
+### With Bun (modern runtime)
+
+    $ bun install -g livedown
 
 ## Usage
 
+### Basic Usage
+
+    $ livedown start README.md --open
+    $ livedown start README.md --port 1337
+    $ livedown stop
+
+### Command Line Options
+
     $ livedown --help
+
+### Development
+
+If you're developing or contributing to livedown:
+
+```bash
+# Clone the repository
+git clone https://github.com/shime/livedown.git
+cd livedown
+
+# Install dependencies with Bun (recommended)
+bun install
+
+# Build the project
+bun run build
+
+# Run in development mode with hot reload
+bun run dev
+
+# Test the CLI
+bun run dist/bin/livedown.js start test.md --open --verbose
+```
+
+### Modern Architecture
+
+This version of livedown has been modernized with:
+
+- **TypeScript**: Full type safety and better developer experience
+- **Vite**: Lightning-fast development server and optimized builds
+- **Modern Dependencies**: Updated to latest versions of all packages
+- **Bun Support**: Optimized for the modern JavaScript runtime
+- **ES Modules**: Modern module system throughout
+- **Socket.io v4**: Real-time communication with better performance
 
 ## Alternatives
 

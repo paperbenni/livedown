@@ -16,9 +16,10 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "build": "bun run build:server && bun run build:client",
+    "build": "bun run build:server && bun run build:client && bun run postbuild",
     "build:server": "tsc",
     "build:client": "vite build",
+    "postbuild": "node scripts/postbuild.js",
     "dev": "concurrently \"bun run dev:server\" \"bun run dev:client\" --names \"server,client\" --prefix-colors \"blue,green\"",
     "dev:server": "NODE_ENV=development bun run --watch src/server.ts",
     "dev:client": "vite dev",
@@ -53,14 +54,11 @@
     "@types/open": "^6.2.1",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
-    "@vitejs/plugin-legacy": "^5.4.1",
     "bun-types": "^1.1.17",
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
-    "expect.js": "^0.3.1",
     "github-markdown-css": "^5.6.1",
     "highlight.js": "^11.11.1",
-    "mocha": "^10.5.2",
     "socket.io-client": "^4.7.5",
     "typescript": "^5.5.3",
     "vite": "^5.3.3"
@@ -68,7 +66,6 @@
   "files": [
     "dist/",
     "public/",
-    "index.html",
     "README.md",
     "LICENSE"
   ],

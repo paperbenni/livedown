@@ -6,10 +6,14 @@ import { Server as SocketIOServer, Socket } from "socket.io";
 import * as chokidar from "chokidar";
 import bodyParser from "body-parser";
 import MarkdownIt from "markdown-it";
-import markdownItTaskCheckbox from "markdown-it-task-checkbox";
-import markdownItEmoji from "markdown-it-emoji";
-import markdownItGitHubHeadings from "markdown-it-github-headings";
+import { createRequire } from "module";
 import { isPathRelative } from "./utils.js";
+
+// Use createRequire to load CommonJS modules
+const require = createRequire(import.meta.url);
+const markdownItTaskCheckbox = require("markdown-it-task-checkbox");
+const markdownItEmoji = require("markdown-it-emoji");
+const markdownItGitHubHeadings = require("markdown-it-github-headings");
 
 interface ServerOptions {
   port?: number;
@@ -51,8 +55,9 @@ class LivedownServer {
       linkify: true,
     });
 
+    // Setup markdown plugins
     this.md.use(markdownItTaskCheckbox);
-    this.md.use(markdownItEmoji);
+    this.md.use(markdownItEmoji.full || markdownItEmoji);
     this.md.use(markdownItGitHubHeadings, {
       prefix: "",
     });
