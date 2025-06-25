@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/shime/livedown.svg)](https://travis-ci.org/shime/livedown)
 [![Downloads](https://img.shields.io/npm/dt/livedown.svg)](https://npmjs.org/package/livedown)
 
-Live markdown previews for your favorite editor. Now powered by TypeScript, Vite, and modern web technologies.
+Live markdown previews for your favorite editor. Now powered by Rust for blazing fast performance, with TypeScript frontend and modern web technologies.
 
 * [Vim plugin](https://github.com/shime/vim-livedown)
 * [Emacs plugin](https://github.com/shime/emacs-livedown)
@@ -17,7 +17,10 @@ Live markdown previews for your favorite editor. Now powered by TypeScript, Vite
 * Emojis :sparkles: :smile: :tada:
 * GitHub flavored clickable headings/permalinks
 * GitHub flavored checkboxes
-* Real-time instant preview
+* Real-time instant preview powered by Rust backend
+* KaTeX LaTeX math rendering support ($...$ and $$...$$ blocks)
+* Multi-line math environments (align, cases, matrices)
+* Blazing fast file watching and updates
 * Modern TypeScript codebase
 * Vite-powered frontend with hot module replacement
 * Socket.io for real-time communication

@@ -1,14 +1,25 @@
 import { io, Socket } from "socket.io-client";
 import hljs from "highlight.js";
 
+// Add MathJax type to window for TypeScript
+declare global {
+  interface Window {
+    MathJax?: {
+      typesetPromise: (elements?: Element[]) => Promise<void>;
+    };
+  }
+}
+
 class LivedownClient {
   private socket: Socket;
   private markdownBody: HTMLElement | null = null;
   private connectionStatus: HTMLElement | null = null;
+  private mathJaxLoaded: boolean = false;
 
   constructor() {
     this.socket = io(window.location.origin);
     this.init();
+    this.loadMathJax();
   }
 
   private init(): void {
@@ -113,13 +124,30 @@ class LivedownClient {
     });
   }
 
-  private updateContent(data: string): void {
+  private async loadMathJax() {
+    if (!window.MathJax) {
+      // @ts-expect-error: MathJax has no types for direct import
+      await import("mathjax/es5/tex-mml-chtml.js");
+      this.mathJaxLoaded = true;
+    }
+  }
+
+  private async renderMath(): Promise<void> {
+    if (!window.MathJax) {
+      await this.loadMathJax();
+    }
+    if (window.MathJax && this.markdownBody) {
+      await window.MathJax.typesetPromise([this.markdownBody]);
+    }
+  }
+
+  private async updateContent(data: string): Promise<void> {
     if (!this.markdownBody) {
       console.error("Cannot update content: markdown body element not found");
       return;
     }
-
     this.markdownBody.innerHTML = data;
+    await this.renderMath();
     this.highlightCode();
     this.setupLinks();
     this.setupTaskLists();
