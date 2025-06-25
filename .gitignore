@@ -5,9 +5,6 @@ bun.lockb
 # Build outputs
 dist/
 public/dist/
-public/*.js
-public/*.css
-public/*.html
 
 # Logs
 *.log
@@ -83,7 +80,6 @@ dist
 
 # Gatsby files
 .cache/
-# public
 
 # Storybook build outputs
 .out
