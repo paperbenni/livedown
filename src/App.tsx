@@ -4,7 +4,7 @@
 import Markdown from "react-markdown";
 import "./App.css";
 import "katex/dist/katex.min.css"; // `rehype-katex` does not import the CSS for you
-import { Button } from "./components/ui/button";
+// import { Button } from "./components/ui/button";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
