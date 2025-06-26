@@ -37,9 +37,7 @@ function App() {
   `;
   return (
     <>
-      <h1 className="text-4xl">Hello</h1>
-      <Button>Hello</Button>
-      <div className="mx-auto max-w-2xl">
+      <div className="mx-auto max-w-2xl my-5">
         <div className="prose">
           <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
             {markdown}
